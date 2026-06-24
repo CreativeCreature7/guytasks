@@ -1,0 +1,5 @@
+[[redirects]]
+  from = "/api/data"
+  to = "https://jsonblob.com/api/jsonBlob/019efae9-84db-776f-931f-cf99b4c61305"
+  status = 200
+  force = true
