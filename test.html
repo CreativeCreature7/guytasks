@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head><title>test</title></head>
+<body>
+<h1>Supabase test</h1>
+<button onclick="testInsert()">Test Insert</button>
+<div id="result"></div>
+<script>
+const KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZnZW50ZmlnZ3docnJhZXdvcGpxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODIzMTg0NjQsImV4cCI6MjA5Nzg5NDQ2NH0.wdr1YAwwt1Tp5Nu7OhJF7eM8B_1BNMA8BOw9Qtrf1Ac';
+const URL = 'https://fgentfiggwhrraewopjq.supabase.co';
+
+async function testInsert() {
+  const el = document.getElementById('result');
+  el.textContent = 'sending...';
+  try {
+    const r = await fetch(URL + '/rest/v1/tasks', {
+      method: 'POST',
+      headers: { 'apikey': KEY, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ text: 'browser test', cat: 'duplex' })
+    });
+    const t = await r.text();
+    el.textContent = 'Status: ' + r.status + ', Response: ' + t;
+  } catch(e) {
+    el.textContent = 'Error: ' + e.message;
+  }
+}
+</script>
+</body>
+</html>
